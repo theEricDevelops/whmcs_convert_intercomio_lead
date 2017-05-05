@@ -5,11 +5,11 @@
  * Please refer to the documentation @ http://docs.whmcs.com/Hooks for more information
  * The code in this hook is commented out by default. Uncomment to use.
  *
- * @package    WHMCS
- * @author     WHMCS Limited <development@whmcs.com>
+ * @package    WHMCS Convert Intercom.io Lead to User
+ * @author     Eric Baker <eric@ericbaker.me>
  * @copyright  GPLv2 (or later)
  * @license    http://www.fsf.org/
- * @version    0.1.0
+ * @version    0.2.0
  * @link       http://www.gowp.com/
  */
 
@@ -67,32 +67,19 @@ function get_lead_user_id_by_email( $lead_email, $access_token ) {
 	return $result->contacts[0]->user_id;
 }
 
-function convert_lead_to_user( $vars['email'], $access_token ) {
+// Now create the hook and create the function
+add_hook( 'ClientAdd', 1, function( $vars, $access_token ) {
 	// Craft the url we want - straight from https://developers.intercom.com/v2.0/reference#convert-a-lead
 	$request_url = "https://api.intercom.io/contacts/convert";
 
 	// Craft the POST Fields
 	$post_fields = '{
 		"contact":{
-			"user_id":"' . get_lead_user_id_by_email( $lead_email, $access_token ) . '"},
-		"user":{ "email":"' . $lead_email . '" }
+			"user_id":"' . get_lead_user_id_by_email( $vars['email'], $access_token ) . '"},
+		"user":{ "email":"' . $vars['email'] . '" }
 	}';
 
 	// Make the Request
-	$result = curl_request( $request_url, $access_token, 'POST', $post_fields );
-
-	//return $result;
-}
-
-// Now create the hook and call the function
-/**
- * Register hook function call.
- *
- * @param string $hookPoint The hook point to call
- * @param integer $priority The priority for the given hook function
- * @param string|function Function name to call or anonymous function.
- *
- * @return Depends on hook function point.
- */
- add_hook( 'ClientAdd', 1, 'convert_lead_to_user' );
+	curl_request( $request_url, $access_token, 'POST', $post_fields );
+} );
 
