@@ -13,8 +13,8 @@
  * @link       http://www.gowp.com/
  */
 
-if (!defined("WHMCS"))
-    die("This file cannot be accessed directly");
+if ( !defined("WHMCS") )
+    die( "This file cannot be accessed directly" );
 
 // Set Intercom Access Token
 $access_token = '';
@@ -67,7 +67,7 @@ function get_lead_user_id_by_email( $lead_email, $access_token ) {
 	return $result->contacts[0]->user_id;
 }
 
-function convert_lead_to_user( $lead_email, $access_token ) {
+function convert_lead_to_user( $vars['email'], $access_token ) {
 	// Craft the url we want - straight from https://developers.intercom.com/v2.0/reference#convert-a-lead
 	$request_url = "https://api.intercom.io/contacts/convert";
 
@@ -94,5 +94,5 @@ function convert_lead_to_user( $lead_email, $access_token ) {
  *
  * @return Depends on hook function point.
  */
- add_hook( 'ClientAdd', 1, convert_lead_to_user( $vars['email'], $access_token ) );
+ add_hook( 'ClientAdd', 1, 'convert_lead_to_user' );
 
