@@ -69,8 +69,8 @@ function get_lead_user_id_by_email($lead_email, $access_token)
     return $result->contacts[0]->user_id;
 }
 
-// Now create the hook and create the function
-add_hook('ClientDetailsValidation', 1, function($vars, $access_token)
+// Now create the hook and the function
+add_hook('ClientAreaHomepage', 1, function($vars, $access_token)
 {
     // Craft the url we want - straight from https://developers.intercom.com/v2.0/reference#convert-a-lead
     $request_url = "https://api.intercom.io/contacts/convert";
