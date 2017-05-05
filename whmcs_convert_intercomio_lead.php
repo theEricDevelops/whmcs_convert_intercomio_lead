@@ -1,4 +1,8 @@
 <?php
+
+// Make sure the file cannot be accessed directly
+if ( ! defined( "WHMCS" ) ) die( "This file cannot be accessed directly" );
+
 // Set Intercom Access Token
 $access_token = '';
 $lead_email = '';
