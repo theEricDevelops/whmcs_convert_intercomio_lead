@@ -1,4 +1,14 @@
 <?php
+/**
+ * Register hook function call.
+ *
+ * @param string $hookPoint The hook point to call
+ * @param integer $priority The priority for the given hook function
+ * @param string|function Function name to call or anonymous function.
+ *
+ * @return Depends on hook function point.
+ */
+
 // Require the intercom.io SDK and use it.
 require "vendor/autoload.php";
 use Intercom\IntercomClient;
@@ -25,5 +35,6 @@ function convert_lead_to_user($lead_email) {
 	]);
 }
 
-	
-?>
+// Now create the hook and call the function
+add_hook('ClientAdd', 1, convert_lead_to_user($vars['email']));
+
