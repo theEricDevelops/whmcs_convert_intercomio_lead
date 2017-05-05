@@ -1,4 +1,21 @@
 <?php
+/**
+ * Example Hook Function
+ *
+ * Please refer to the documentation @ http://docs.whmcs.com/Hooks for more information
+ * The code in this hook is commented out by default. Uncomment to use.
+ *
+ * @package    WHMCS
+ * @author     WHMCS Limited <development@whmcs.com>
+ * @copyright  GPLv2 (or later)
+ * @license    http://www.fsf.org/
+ * @version    0.1.0
+ * @link       http://www.gowp.com/
+ */
+
+if (!defined("WHMCS"))
+    die("This file cannot be accessed directly");
+
 // Set Intercom Access Token
 $access_token = '';
 
@@ -64,7 +81,7 @@ function convert_lead_to_user( $lead_email, $access_token ) {
 	// Make the Request
 	$result = curl_request( $request_url, $access_token, 'POST', $post_fields );
 
-	return $result;
+	//return $result;
 }
 
 // Now create the hook and call the function
