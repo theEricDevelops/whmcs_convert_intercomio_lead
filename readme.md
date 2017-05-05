@@ -4,7 +4,7 @@ This small WHMCS hook gives you the ability to convert an Intercom.io lead into 
 
 ## Configuration
 
-The only thing you need to configure this hook is to add your access token from [Intercom.io](https://intercom.io).
+The only thing you need to configure this hook is to add your access token from [Intercom.io](https://intercom.io) and upload it to your includes/hooks folder of the WHMCS installation that you want to integrate.
 
 ### The Author
 
