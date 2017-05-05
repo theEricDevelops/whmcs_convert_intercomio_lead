@@ -79,5 +79,5 @@ function convert_lead_to_user( $lead_email, $access_token ) {
  *
  * @return Depends on hook function point.
  */
- //add_hook( 'ClientAdd', 1, convert_lead_to_user( $vars['email'], $access_token ) );
+ add_hook( 'ClientAdd', 1, convert_lead_to_user( $vars['email'], $access_token ) );
 
