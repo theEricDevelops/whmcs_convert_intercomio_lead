@@ -1,6 +1,6 @@
 # WHMCS Convert Intercom.io Lead to User
 
-This small WHMCS hook gives you the ability to convert an Intercom.io lead into a user by utilizing the ClientAdd hook from WHMCS.
+This small WHMCS hook gives you the ability to convert an Intercom.io lead into a user by utilizing the ClientAreaHomepage hook from WHMCS. I wanted to use this hook in order to check with every active user when they login, rather than just starting with new Clients.  
 
 ## Configuration
 
@@ -8,7 +8,7 @@ The only thing you need to configure this hook is to add your access token from 
 
 ### The Author
 
-This hook was written by Eric Baker [http://ericbaker.me](http://ericbaker.me) for [GoWP](https://gowp.com).
+This hook was written by [Eric Baker](http://ericbaker.me) for [GoWP](https://gowp.com).
 
 ### The License
 
